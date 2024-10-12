@@ -1,0 +1,34 @@
+GET /_search
+
+GET /movies/_search
+{
+  "query": {
+    "match": {
+      "actor.keyword": "Gregory, James"
+    }
+  }
+}
+
+GET /movies/_search
+{
+  "query":{
+    "wildcard": {
+      "title": {
+        "value": "*aus*"
+      }
+    }
+  }
+}
+
+
+GET /movies/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {"match": {"genre": "Drama"}},
+        {"match": {"title": "Rebel Without a Cause"}}
+      ]
+    }
+  }
+}
